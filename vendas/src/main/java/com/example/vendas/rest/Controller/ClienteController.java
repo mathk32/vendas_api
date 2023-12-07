@@ -4,10 +4,9 @@ import com.example.vendas.domain.entities.Clientes;
 import com.example.vendas.domain.repository.ClientesR;
 import com.example.vendas.rest.Exceptions.RegraDeNegocios;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import static org.springframework.http.HttpStatus.*;
 
 
 @RestController
@@ -24,13 +23,13 @@ public class ClienteController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(CREATED)
     public Clientes save(@RequestBody Clientes cliente){
         return clientes_repository.save(cliente);
     }
 
     @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id, @RequestBody Clientes cliente){
         clientes_repository.findById(id).map(cliente_encontrado -> {
             cliente.setId(cliente_encontrado.getId());
@@ -40,10 +39,10 @@ public class ClienteController {
     }
 
     @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(NO_CONTENT)
     public void delete(@PathVariable Integer id){
         clientes_repository.findById(id).map(cliente_encontrado -> {
-            clientes_repository.deleteById(id);
+            clientes_repository.delete(cliente_encontrado);
             return cliente_encontrado;
         }).orElseThrow(() -> new RegraDeNegocios("Cliente não encontrado"));
 
