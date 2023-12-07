@@ -24,8 +24,9 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Clientes save(@RequestBody Clientes cliente){
-        return clientes_repository.save(cliente);
+    public Integer save(@RequestBody Clientes cliente){
+        clientes_repository.save(cliente);
+        return cliente.getId();
     }
 
     @PutMapping("{id}")
