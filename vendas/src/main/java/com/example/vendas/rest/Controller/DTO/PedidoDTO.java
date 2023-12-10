@@ -1,5 +1,6 @@
 package com.example.vendas.rest.Controller.DTO;
 
+import com.example.vendas.domain.entities.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

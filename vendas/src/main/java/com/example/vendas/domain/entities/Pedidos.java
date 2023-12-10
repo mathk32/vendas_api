@@ -1,5 +1,6 @@
 package com.example.vendas.domain.entities;
 
+import com.example.vendas.domain.entities.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Pedidos {
     private Clientes cliente;
     private LocalDate data;
     private float total;
+    private Status status;
     @OneToMany(mappedBy = "pedido")
     private List<itemPedido> itens;
 }
