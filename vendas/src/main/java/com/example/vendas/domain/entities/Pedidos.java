@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class Pedidos {
     @JoinColumn(name = "cliente_id")
     private Clientes cliente;
     private LocalDate data;
-    private float total;
+    private BigDecimal total;
     private Status status;
     @OneToMany(mappedBy = "pedido")
     private List<itemPedido> itens;

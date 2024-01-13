@@ -11,7 +11,7 @@ public class itemPedidoDTO {
 
     private Integer id_produto;
     private Integer id_pedido;
-    private int quantidade;
+    private Integer quantidade;
 
 }
 

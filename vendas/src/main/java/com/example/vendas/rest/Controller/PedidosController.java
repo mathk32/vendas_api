@@ -12,6 +12,7 @@ import com.example.vendas.rest.Controller.DTO.InfitemPedidoDTO;
 import com.example.vendas.rest.Controller.DTO.PedidoDTO;
 import com.example.vendas.rest.Controller.Service.Imp.PedidosServiceImpl;
 import com.example.vendas.rest.Exceptions.RegraDeNegocios;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ public class PedidosController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Integer save(@RequestBody PedidoDTO pedido){
+    public Integer save(@Valid  @RequestBody PedidoDTO pedido){
         return service.salvar(pedido);
     }
 

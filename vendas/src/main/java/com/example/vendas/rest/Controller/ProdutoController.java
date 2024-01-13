@@ -4,6 +4,7 @@ import com.example.vendas.domain.entities.Produto;
 import com.example.vendas.domain.repository.ProdutosR;
 
 import com.example.vendas.rest.Exceptions.RegraDeNegocios;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +25,7 @@ public class ProdutoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Integer save(@RequestBody Produto produto) {
+    public Integer save( @Valid @RequestBody Produto produto) {
         produtos_repository.save(produto);
         return produto.getId();
     }
@@ -32,7 +33,7 @@ public class ProdutoController {
 
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
-    public void update(@PathVariable Integer id, @RequestBody Produto produto){
+    public void update(@PathVariable Integer id, @Valid @RequestBody Produto produto){
         produtos_repository.findById(id).map(produto_encontrado -> {
             produto.setId(produto_encontrado.getId());
             produtos_repository.save(produto);

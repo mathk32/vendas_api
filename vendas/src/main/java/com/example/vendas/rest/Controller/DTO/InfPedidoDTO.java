@@ -4,6 +4,7 @@ package com.example.vendas.rest.Controller.DTO;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -14,7 +15,7 @@ public class InfPedidoDTO {
     private String cpf;
     private String data;
     private List<InfitemPedidoDTO> itens;
-    private float total;
+    private BigDecimal total;
     private String status;
 }
 

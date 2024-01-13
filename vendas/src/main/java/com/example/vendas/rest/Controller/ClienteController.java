@@ -3,6 +3,7 @@ package com.example.vendas.rest.Controller;
 import com.example.vendas.domain.entities.Clientes;
 import com.example.vendas.domain.repository.ClientesR;
 import com.example.vendas.rest.Exceptions.RegraDeNegocios;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,14 +25,14 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Integer save(@RequestBody Clientes cliente){
+    public Integer save( @Valid @RequestBody Clientes cliente){
         clientes_repository.save(cliente);
         return cliente.getId();
     }
 
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
-    public void update(@PathVariable Integer id, @RequestBody Clientes cliente){
+    public void update(@PathVariable Integer id, @Valid @RequestBody Clientes cliente){
         clientes_repository.findById(id).map(cliente_encontrado -> {
             cliente.setId(cliente_encontrado.getId());
             clientes_repository.save(cliente);
